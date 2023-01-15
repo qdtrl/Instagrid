@@ -11,8 +11,10 @@
 		3CB443982974933600C9819F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB443972974933600C9819F /* SceneDelegate.swift */; };
 		3CB4439A2974933600C9819F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB443992974933600C9819F /* ViewController.swift */; };
 		3CB4439D2974933600C9819F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB4439B2974933600C9819F /* Main.storyboard */; };
-		3CB4439F2974933800C9819F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB4439E2974933800C9819F /* Assets.xcassets */; };
 		3CB443A22974933800C9819F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB443A02974933800C9819F /* LaunchScreen.storyboard */; };
+		3CB443AD2974936A00C9819F /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CB443AB2974936900C9819F /* Delm-Medium.otf */; };
+		3CB443AE2974936A00C9819F /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CB443AC2974936A00C9819F /* ThirstySoftRegular.otf */; };
+		3CB443B0297493CA00C9819F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB443AF297493CA00C9819F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +23,11 @@
 		3CB443972974933600C9819F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3CB443992974933600C9819F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3CB4439C2974933600C9819F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3CB4439E2974933800C9819F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CB443A12974933800C9819F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CB443A32974933800C9819F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CB443AB2974936900C9819F /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		3CB443AC2974936A00C9819F /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		3CB443AF297493CA00C9819F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		3CB443942974933600C9819F /* Dubut-Touroul_Quentin_1_code_source_012023 */ = {
 			isa = PBXGroup;
 			children = (
+				3CB443A92974934100C9819F /* Ressource */,
 				3CB443952974933600C9819F /* AppDelegate.swift */,
 				3CB443972974933600C9819F /* SceneDelegate.swift */,
 				3CB443992974933600C9819F /* ViewController.swift */,
 				3CB4439B2974933600C9819F /* Main.storyboard */,
-				3CB4439E2974933800C9819F /* Assets.xcassets */,
+				3CB443AF297493CA00C9819F /* Assets.xcassets */,
 				3CB443A02974933800C9819F /* LaunchScreen.storyboard */,
 				3CB443A32974933800C9819F /* Info.plist */,
 			);
 			path = "Dubut-Touroul_Quentin_1_code_source_012023";
+			sourceTree = "<group>";
+		};
+		3CB443A92974934100C9819F /* Ressource */ = {
+			isa = PBXGroup;
+			children = (
+				3CB443AA2974935100C9819F /* Fonts */,
+			);
+			path = Ressource;
+			sourceTree = "<group>";
+		};
+		3CB443AA2974935100C9819F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3CB443AB2974936900C9819F /* Delm-Medium.otf */,
+				3CB443AC2974936A00C9819F /* ThirstySoftRegular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB443A22974933800C9819F /* LaunchScreen.storyboard in Resources */,
-				3CB4439F2974933800C9819F /* Assets.xcassets in Resources */,
+				3CB443AE2974936A00C9819F /* ThirstySoftRegular.otf in Resources */,
+				3CB443AD2974936A00C9819F /* Delm-Medium.otf in Resources */,
 				3CB4439D2974933600C9819F /* Main.storyboard in Resources */,
+				3CB443B0297493CA00C9819F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
