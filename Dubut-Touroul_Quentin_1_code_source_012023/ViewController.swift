@@ -21,10 +21,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         actionWhenIndexChange()
-//        NotificationCenter.default.addObserver(self,
-//                                                       selector: #selector(changeDeviceOrientation),
-//                                                       name: UIDevice.orientationDidChangeNotification,
-//                                                       object: nil)
+        NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(changeDeviceOrientation),
+                                                       name: UIDevice.orientationDidChangeNotification,
+                                                       object: nil)
 
     }
     
@@ -35,18 +35,6 @@ class ViewController: UIViewController {
             switch sender.state {
             case .began, .changed:
                 transformViewWith(gesture: sender)
-            case .ended:
-                if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
-                    if mainView.transform.tx < -80 {
-                        share()
-                    }
-                } else {
-                    if mainView.transform.ty < -80 {
-                        share()
-                    }
-                }
-            case .cancelled:
-                mainView.transform = .identity
             default:
                 break
             }
@@ -78,13 +66,25 @@ class ViewController: UIViewController {
         let translation = gesture.translation(in: mainView)
         if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
             if translation.x < -80 {
-                mainView.transform = CGAffineTransform(translationX: 400, y: 400)
+                UIView.animate(withDuration: 0.8, animations: {
+                    self.mainView.transform = CGAffineTransform(translationX: -900, y: 0)                }, completion: { (success) in
+                    if success {
+                        self.share()
+                    }
+                })
+               
             } else {
                 mainView.transform = .identity
             }
         } else {
             if translation.y < -80 {
-                mainView.transform = CGAffineTransform(translationX: 400, y: 400)
+                UIView.animate(withDuration: 0.8, animations: {
+                    self.mainView.transform = CGAffineTransform(translationX: 0, y: -900)
+                }, completion: { (success) in
+                    if success {
+                        self.share()
+                    }
+                })
             } else {
                 mainView.transform = .identity
             }
@@ -97,7 +97,6 @@ class ViewController: UIViewController {
     
     // Layouts Change
     @IBAction func ButtonsLayout(_ sender: UIButton) {
-        print(sender.tag)
         indexLayout = sender.tag
         actionWhenIndexChange()
     }
@@ -134,15 +133,15 @@ class ViewController: UIViewController {
     }
    
     
-//    @IBOutlet weak var SwipeText: UILabel!
-//
-//    @objc func changeDeviceOrientation() {
-//        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
-//            SwipeText.text = "Swipe left to share"
-//        } else {
-//            SwipeText.text = "Swipe up to share"
-//        }
-//    }
+    @IBOutlet weak var SwipeText: UILabel!
+
+    @objc func changeDeviceOrientation() {
+        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+            SwipeText.text = "Swipe left to share"
+        } else {
+            SwipeText.text = "Swipe up to share"
+        }
+    }
 
     private func combine() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
@@ -168,11 +167,31 @@ class ViewController: UIViewController {
         return newImage
     }
     
+    private func undoTransformView() {
+        if UIDevice.current.orientation == .landscapeRight
+            || UIDevice.current.orientation == .landscapeLeft {
+                UIView.animate(withDuration: 0.8, animations: {
+                    self.mainView.transform = CGAffineTransform(translationX: 0, y: 0)
+                }, completion: { (success) in
+                    if success { self.mainView.transform = .identity }
+                })
+        } else {
+            UIView.animate(withDuration: 0.8, animations: {
+                    self.mainView.transform = CGAffineTransform(translationX: 0, y: 0)
+                }, completion: { (success) in
+                    if success { self.mainView.transform = .identity }
+                })
+            }
+    }
     private func share() {
         let newImage = combine()
         let items = [newImage]
         let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activity, animated: true)
+        activity.completionWithItemsHandler = { (_, _, _, _) in
+            self.undoTransformView()
+        }
+        
     }
 }
 
