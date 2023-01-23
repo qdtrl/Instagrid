@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -21,135 +21,195 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dubut_Touroul_Quentin_1_code_source_012023" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iER-tf-V7H" userLabel="BarController">
-                                <rect key="frame" x="16" y="704" width="359" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66U-WQ-V74" userLabel="Logo">
+                                <rect key="frame" x="128" y="64" width="158" height="52"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-Zz-5aO" userLabel="Swipe View">
+                                <rect key="frame" x="107" y="163" width="200" height="80"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-WQ-Cvh">
-                                        <rect key="frame" x="53" y="10" width="252" height="40.666666666666664"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="5AR-7B-NaX" userLabel="Arrow">
+                                        <rect key="frame" x="90" y="0.0" width="20" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="qPu-7c-mrg"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        <variation key="heightClass=compact" image="ArrowLeft"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL9-iN-3PG" userLabel="SwipeText">
+                                        <rect key="frame" x="6.3333333333333286" y="40" width="187.33333333333337" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FcY-50-6cB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="D7C-f2-HWW"/>
+                                    <constraint firstAttribute="height" constant="80" id="FYa-Om-qNj"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8C-7F-5CY" userLabel="Grid">
+                                <rect key="frame" x="32" y="273" width="350" height="350"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0wL-5x-xAF" userLabel="Top">
+                                        <rect key="frame" x="15" y="15" width="320" height="152"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri3-ph-3gC" userLabel="ButtonLayout1">
-                                                <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="40.666666666666664"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Layout 1"/>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrO-gy-am7" userLabel="ImageLeft">
+                                                <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="152"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Plus">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RoM-yl-mwv"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAf-2K-GQP" userLabel="ButtonLayout2">
-                                                <rect key="frame" x="100.66666666666667" y="0.0" width="50.666666666666671" height="40.666666666666664"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Layout 2"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCN-5q-ts0" userLabel="ButtonLayout3">
-                                                <rect key="frame" x="201.33333333333334" y="0.0" width="50.666666666666657" height="40.666666666666664"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Layout 3"/>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cU-dc-Dvm" userLabel="ImageRight">
+                                                <rect key="frame" x="167.66666666666663" y="0.0" width="152.33333333333337" height="152"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Plus">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2e-dF-oxW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="AccentColor "/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="152" id="km2-p5-7XA"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-KV-N9v" userLabel="Bottom">
+                                        <rect key="frame" x="15" y="182" width="320" height="153"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knP-g7-oBh" userLabel="ImageLeft">
+                                                <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="153"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Plus">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbd-zG-8vx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-Cl-qLC" userLabel="ImageRight">
+                                                <rect key="frame" x="167.66666666666663" y="0.0" width="152.33333333333337" height="153"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Plus">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOW-as-m31"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="AccentColor "/>
+                                <color key="backgroundColor" red="0.32568460700000001" green="0.3369917274" blue="0.34902149440000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="1aV-xg-QxE"/>
+                                    <constraint firstAttribute="bottom" secondItem="l4w-KV-N9v" secondAttribute="bottom" constant="15" id="9BV-0x-Ve2"/>
+                                    <constraint firstAttribute="width" secondItem="y8C-7F-5CY" secondAttribute="height" multiplier="1:1" id="Eid-1H-xZ1"/>
+                                    <constraint firstAttribute="trailing" secondItem="0wL-5x-xAF" secondAttribute="trailing" constant="15" id="Gr8-bu-dMg"/>
+                                    <constraint firstItem="0wL-5x-xAF" firstAttribute="top" secondItem="y8C-7F-5CY" secondAttribute="top" constant="15" id="NJh-LH-Xa3"/>
+                                    <constraint firstItem="l4w-KV-N9v" firstAttribute="top" secondItem="0wL-5x-xAF" secondAttribute="bottom" constant="15" id="Uqt-Z8-ow9"/>
+                                    <constraint firstItem="l4w-KV-N9v" firstAttribute="leading" secondItem="y8C-7F-5CY" secondAttribute="leading" constant="15" id="kob-JP-IAu"/>
+                                    <constraint firstItem="0wL-5x-xAF" firstAttribute="leading" secondItem="y8C-7F-5CY" secondAttribute="leading" constant="15" id="xh8-Wx-x0I"/>
+                                    <constraint firstAttribute="trailing" secondItem="l4w-KV-N9v" secondAttribute="trailing" constant="15" id="z0q-Ga-JFD"/>
+                                </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="buu-l0-X2h">
-                                <rect key="frame" x="16" y="59" width="359" height="574"/>
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-WQ-Cvh" userLabel="BarController">
+                                <rect key="frame" x="32" y="742" width="350" height="80"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXr-wU-fkh" userLabel="Logo">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="64"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66U-WQ-V74">
-                                                <rect key="frame" x="120" y="13" width="119" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" name="AccentColor "/>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tk-CQ-9po" userLabel="SwipeShare">
-                                        <rect key="frame" x="0.0" y="124" width="359" height="69"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="5AR-7B-NaX">
-                                                <rect key="frame" x="173" y="8" width="13" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe up to Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL9-iN-3PG" userLabel="SwipeText">
-                                                <rect key="frame" x="117" y="32" width="125" height="23"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" name="AccentColor "/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri3-ph-3gC" userLabel="ButtonLayout1">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="80"/>
                                         <color key="tintColor" name="AccentColor "/>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TM5-Gw-g9d" userLabel="Layout">
-                                        <rect key="frame" x="0.0" y="253" width="359" height="321"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="72l-fE-xzv">
-                                                <rect key="frame" x="8" y="8" width="343" height="305"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Glc-7L-VuO" userLabel="ImageTopLeft">
-                                                <rect key="frame" x="39" y="20" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-CU-MW4" userLabel="ButtonTopLeft">
-                                                <rect key="frame" x="39" y="20" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Plus"/>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rW-kY-oas" userLabel="ImageBottomLeft">
-                                                <rect key="frame" x="39" y="164" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7a-P4-9au" userLabel="ButtonBottomLeft">
-                                                <rect key="frame" x="39" y="164" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Plus"/>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4T-jP-owc" userLabel="ImageTopRight">
-                                                <rect key="frame" x="183" y="20" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-hu-Te7" userLabel="ButtonTopRight">
-                                                <rect key="frame" x="183" y="20" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Plus"/>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a82-4Y-qJQ" userLabel="ImageBottomRight">
-                                                <rect key="frame" x="183" y="164" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNZ-DB-g8z" userLabel="ButtonBottomRight">
-                                                <rect key="frame" x="183" y="164" width="136" height="136"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Plus"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" name="AccentColor "/>
-                                    </view>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="Layout 1">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ButtonsLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3ir-V9-5fp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-m9-3e7" userLabel="ButtonLayout2">
+                                        <rect key="frame" x="130" y="0.0" width="90" height="80"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="Layout 2"/>
+                                        <connections>
+                                            <action selector="ButtonsLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zRy-pV-Mhe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFg-Wz-qdB" userLabel="ButtonLayout3">
+                                        <rect key="frame" x="260" y="0.0" width="90" height="80"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="Layout 3"/>
+                                        <connections>
+                                            <action selector="ButtonsLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAl-4s-W9M"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <color key="backgroundColor" name="AccentColor "/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="Ql7-XK-6uQ"/>
+                                    <constraint firstAttribute="height" constant="80" id="zef-yA-XuJ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="AccentColor "/>
+                        <color key="tintColor" name="AccentColor "/>
+                        <constraints>
+                            <constraint firstItem="Svk-Zz-5aO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1tG-r1-BfW"/>
+                            <constraint firstItem="y8C-7F-5CY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3ex-ac-UFo"/>
+                            <constraint firstItem="UOc-WQ-Cvh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NGd-TF-yRo"/>
+                            <constraint firstItem="y8C-7F-5CY" firstAttribute="top" secondItem="Svk-Zz-5aO" secondAttribute="bottom" constant="30" id="X59-hN-lsr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UOc-WQ-Cvh" secondAttribute="bottom" constant="40" id="d5q-n4-5xk"/>
+                            <constraint firstItem="66U-WQ-V74" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kZP-A8-aMm"/>
+                            <constraint firstItem="y8C-7F-5CY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pSV-cy-pAO"/>
+                            <constraint firstItem="66U-WQ-V74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="qvM-dF-ux5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ButtonLayout1" destination="ri3-ph-3gC" id="GJs-dQ-OK9"/>
+                        <outlet property="ButtonLayout2" destination="EPx-m9-3e7" id="HAi-Qp-Qhk"/>
+                        <outlet property="ButtonLayout3" destination="wFg-Wz-qdB" id="jIu-GD-pMN"/>
+                        <outlet property="ImageBottomLeft" destination="knP-g7-oBh" id="sPh-hV-qRU"/>
+                        <outlet property="ImageBottomRight" destination="kFE-Cl-qLC" id="MA9-hE-xr2"/>
+                        <outlet property="ImageTopLeft" destination="XrO-gy-am7" id="V0V-b4-h49"/>
+                        <outlet property="ImageTopRight" destination="0cU-dc-Dvm" id="g1p-wF-XGY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="juX-Av-Vwl">
+                    <connections>
+                        <action selector="ShareGesture:" destination="BYZ-38-t0r" id="u0M-2H-6nO"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="116.79389312977099" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="115.94202898550725" y="-2.6785714285714284"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ArrowLeft" width="3.3333332538604736" height="4.6666665077209473"/>
         <image name="ArrowUp" width="4.6666665077209473" height="3.3333332538604736"/>
         <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
