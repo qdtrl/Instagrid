@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     private var button: UIButton!
     var indexLayout: Int = 1
-
+    var fullImage: [Bool] = [false,false,false,false]
     
     
     @IBAction func Buttons(_ sender: UIButton) {
@@ -28,72 +28,68 @@ class ViewController: UIViewController {
 
     }
     
-//    @IBAction func ShareGesture(_ sender: UIPanGestureRecognizer) {
-//        if allImageAreHere() {
-//            Layout.bringSubviewToFront(Layout)
-//
-//            switch sender.state {
-//            case .began, .changed:
-//                transformLayoutViewWith(gesture: sender)
-//            case .ended:
-//                if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
-//                    if Layout.transform.tx < -80 {
-//                        share()
-//                    }
-//                } else {
-//                    if Layout.transform.ty < -80 {
-//                        share()
-//                    }
-//                }
-//                Layout.transform = .identity
-//                Layout.backgroundColor = UIColor(named: "AccentColor")
-//            case .cancelled:
-//                Layout.transform = .identity
-//                Layout.backgroundColor = UIColor(named: "AccentColor")
-//            default:
-//                break
-//            }
-//        }
-//    }
+    @IBOutlet var mainView: UIView!
+    
+    @IBAction func ShareGesture(_ sender: UIPanGestureRecognizer) {
+        if allImageAreHere() {
+            switch sender.state {
+            case .began, .changed:
+                transformViewWith(gesture: sender)
+            case .ended:
+                if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+                    if mainView.transform.tx < -80 {
+                        share()
+                    }
+                } else {
+                    if mainView.transform.ty < -80 {
+                        share()
+                    }
+                }
+            case .cancelled:
+                mainView.transform = .identity
+            default:
+                break
+            }
+        }
+    }
 
     // Check of all images presents to build the new image before sharing
-//    private func allImageAreHere() -> Bool {
-//        switch indexLayout {
-//        case 1:
-//            if ImageTopLeft.image == nil || ImageBottomLeft == nil || ImageBottomRight == nil {
-//                return false
-//            }
-//        case 2:
-//            if ImageTopLeft.image == nil || ImageTopRight.image == nil || ImageBottomRight.image == nil {
-//                return false
-//            }
-//        case 3:
-//            if ImageTopLeft.image == nil || ImageTopRight.image == nil || ImageBottomLeft.image == nil || ImageBottomRight.image == nil {
-//                return false
-//            }
-//        default:
-//            return true
-//        }
-//        return true
-//    }
+    private func allImageAreHere() -> Bool {
+        switch indexLayout {
+        case 1:
+            if fullImage[0] && fullImage[2] && fullImage[3] {
+                return true
+            }
+        case 2:
+            if fullImage[0] && fullImage[1] && fullImage[3] {
+                return true
+            }
+        case 3:
+            if fullImage[0] && fullImage[1] && fullImage[2] && fullImage[3] {
+                return true
+            }
+        default:
+            return false
+        }
+        return false
+    }
         
-//    private func transformLayoutViewWith(gesture: UIPanGestureRecognizer) {
-//        let translation = gesture.translation(in: Layout)
-//        Layout.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
-//        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
-//            if translation.x < -80 {
-//                Layout.backgroundColor = UIColor(red: 0, green: 253, blue: 0, alpha: 1)
-//            } else {
-//                Layout.backgroundColor = UIColor(named: "AccentColor")
-//            }
-//        } else {
-//            if translation.y < -80 {
-//                Layout.backgroundColor = UIColor(red: 0, green: 253, blue: 0, alpha: 1)
-//            } else {
-//                Layout.backgroundColor = UIColor(named: "AccentColor")
-//            }
-//        }
-//    }
+    private func transformViewWith(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: mainView)
+        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+            if translation.x < -80 {
+                mainView.transform = CGAffineTransform(translationX: 400, y: 400)
+            } else {
+                mainView.transform = .identity
+            }
+        } else {
+            if translation.y < -80 {
+                mainView.transform = CGAffineTransform(translationX: 400, y: 400)
+            } else {
+                mainView.transform = .identity
+            }
+        }
+    }
     
     @IBOutlet weak var ButtonLayout1: UIButton!
     @IBOutlet weak var ButtonLayout2: UIButton!
@@ -113,7 +109,7 @@ class ViewController: UIViewController {
     
     
     func actionWhenIndexChange() {
-        var selected = UIImage(named: "Selected")
+        let selected = UIImage(named: "Selected")
         
         switch indexLayout {
         case 1:
@@ -147,37 +143,37 @@ class ViewController: UIViewController {
 //            SwipeText.text = "Swipe up to share"
 //        }
 //    }
-//
-//    private func combine() -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(CGSize(width: 310, height: 310), false, 0.0)
-//            switch indexLayout {
-//            case 1:
-//                ImageBottomLeft.image!.draw(in: CGRect(x: 0, y: 155, width: 155, height: 155))
-//                ImageBottomRight.image!.draw(in: CGRect(x: 155, y: 155, width: 155, height: 155))
-//                ImageTopLeft.image!.draw(in: CGRect(x: 0, y: 0, width: 310, height: 155))
-//            case 2:
-//                ImageTopLeft.image!.draw(in: CGRect(x: 0, y: 0, width: 155, height: 155))
-//                ImageTopRight.image!.draw(in: CGRect(x: 155, y: 0, width: 155, height: 155))
-//                ImageBottomLeft.image!.draw(in: CGRect(x: 0, y: 155, width: 310, height: 155))
-//            case 3:
-//                ImageTopLeft.image!.draw(in: CGRect(x: 0, y: 0, width: 155, height: 155))
-//                ImageTopRight.image!.draw(in: CGRect(x: 155, y: 0, width: 155, height: 155))
-//                ImageBottomLeft.image!.draw(in: CGRect(x: 0, y: 155, width: 155, height: 155))
-//                ImageBottomRight.image!.draw(in: CGRect(x: 155, y: 155, width: 155, height: 155))
-//            default:
-//                return UIImage(named: "Selected")!
-//            }
-//            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//        return newImage
-//    }
+
+    private func combine() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
+            switch indexLayout {
+            case 1:
+                ImageBottomLeft.currentImage!.draw(in: CGRect(x: 0, y: 175, width: 175, height: 175))
+                ImageBottomRight.currentImage!.draw(in: CGRect(x: 175, y: 175, width: 175, height: 175))
+                ImageTopLeft.currentImage!.draw(in: CGRect(x: 0, y: 0, width: 350, height: 175))
+            case 2:
+                ImageTopLeft.currentImage!.draw(in: CGRect(x: 0, y: 0, width: 175, height: 175))
+                ImageTopRight.currentImage!.draw(in: CGRect(x: 175, y: 0, width: 175, height: 175))
+                ImageBottomRight.currentImage!.draw(in: CGRect(x: 0, y: 175, width: 350, height: 175))
+            case 3:
+                ImageTopLeft.currentImage!.draw(in: CGRect(x: 0, y: 0, width: 175, height: 175))
+                ImageTopRight.currentImage!.draw(in: CGRect(x: 175, y: 0, width: 175, height: 175))
+                ImageBottomLeft.currentImage!.draw(in: CGRect(x: 0, y: 175, width: 175, height: 175))
+                ImageBottomRight.currentImage!.draw(in: CGRect(x: 175, y: 175, width: 175, height: 175))
+            default:
+                return UIImage(named: "Selected")!
+            }
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
     
-//    private func share() {
-//        let newImage = combine()
-//        let items = [newImage]
-//        let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//        present(activity, animated: true)
-//    }
+    private func share() {
+        let newImage = combine()
+        let items = [newImage]
+        let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activity, animated: true)
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -187,12 +183,16 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         switch button.tag {
         case 4:
             ImageTopLeft.setImage(image as? UIImage, for: .normal)
+            fullImage[0] = true
         case 5:
             ImageTopRight.setImage(image as? UIImage, for: .normal)
+            fullImage[1] = true
         case 6:
             ImageBottomLeft.setImage(image as? UIImage, for: .normal)
+            fullImage[2] = true
         case 7:
             ImageBottomRight.setImage(image as? UIImage, for: .normal)
+            fullImage[3] = true
         default:
             print("erreurs maggle")
         }

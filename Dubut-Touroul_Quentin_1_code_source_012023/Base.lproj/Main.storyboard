@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -21,17 +21,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dubut_Touroul_Quentin_1_code_source_012023" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66U-WQ-V74" userLabel="Logo">
-                                <rect key="frame" x="128" y="64" width="158" height="52"/>
+                                <rect key="frame" x="136" y="79" width="158" height="52"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-Zz-5aO" userLabel="Swipe View">
-                                <rect key="frame" x="107" y="163" width="200" height="80"/>
+                                <rect key="frame" x="115" y="181" width="200" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="5AR-7B-NaX" userLabel="Arrow">
                                         <rect key="frame" x="90" y="0.0" width="20" height="32"/>
@@ -58,7 +58,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8C-7F-5CY" userLabel="Grid">
-                                <rect key="frame" x="32" y="273" width="350" height="350"/>
+                                <rect key="frame" x="40" y="291" width="350" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0wL-5x-xAF" userLabel="Top">
                                         <rect key="frame" x="15" y="15" width="320" height="152"/>
@@ -132,7 +132,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-WQ-Cvh" userLabel="BarController">
-                                <rect key="frame" x="32" y="742" width="350" height="80"/>
+                                <rect key="frame" x="40" y="778" width="350" height="80"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri3-ph-3gC" userLabel="ButtonLayout1">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="80"/>
@@ -177,6 +177,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="AccentColor "/>
                         <color key="tintColor" name="AccentColor "/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Svk-Zz-5aO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1tG-r1-BfW"/>
                             <constraint firstItem="y8C-7F-5CY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3ex-ac-UFo"/>
@@ -187,6 +188,9 @@
                             <constraint firstItem="y8C-7F-5CY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pSV-cy-pAO"/>
                             <constraint firstItem="66U-WQ-V74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="qvM-dF-ux5"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="juX-Av-Vwl" appends="YES" id="bGF-gJ-qar"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="ButtonLayout1" destination="ri3-ph-3gC" id="GJs-dQ-OK9"/>
@@ -196,6 +200,7 @@
                         <outlet property="ImageBottomRight" destination="kFE-Cl-qLC" id="MA9-hE-xr2"/>
                         <outlet property="ImageTopLeft" destination="XrO-gy-am7" id="V0V-b4-h49"/>
                         <outlet property="ImageTopRight" destination="0cU-dc-Dvm" id="g1p-wF-XGY"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="BKY-iN-HXD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
