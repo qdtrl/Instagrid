@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     private var button: UIButton!
+    
     var indexLayout: Int = 1
     var fullImage: [Bool] = [false,false,false,false]
     
@@ -21,11 +22,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         actionWhenIndexChange()
-        NotificationCenter.default.addObserver(self,
-                                                       selector: #selector(changeDeviceOrientation),
-                                                       name: UIDevice.orientationDidChangeNotification,
-                                                       object: nil)
-
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(changeDeviceOrientation),
+            name: UIDevice.orientationDidChangeNotification,
+            object: nil
+        )
     }
     
     @IBOutlet var mainView: UIView!
