@@ -13,10 +13,38 @@ class ViewController: UIViewController {
     var indexLayout: Int = 1
     var fullImage: [Bool] = [false,false,false,false]
     
+    @IBOutlet weak var gridView: UIView!
+
+    @IBOutlet weak var swipeText: UILabel!
+
+    @IBOutlet weak var ImageBottomLeft: UIButton!
+    @IBOutlet weak var ImageBottomRight: UIButton!
+    @IBOutlet weak var ImageTopRight: UIButton!
+    @IBOutlet weak var ImageTopLeft: UIButton!
     
-    @IBAction func Buttons(_ sender: UIButton) {
+    @IBOutlet weak var ButtonLayout1: UIButton!
+    @IBOutlet weak var ButtonLayout2: UIButton!
+    @IBOutlet weak var ButtonLayout3: UIButton!
+    
+    @IBAction func buttonsImage(_ sender: UIButton) {
         button = sender
         openGallery()
+    }
+    
+    @IBAction func buttonsLayout(_ sender: UIButton) {
+        indexLayout = sender.tag
+        actionWhenIndexChange()
+    }
+    
+    @IBAction func shareGesture(_ sender: UIPanGestureRecognizer) {
+        if allImageAreHere() {
+            switch sender.state {
+            case .began, .changed:
+                transformViewWith(gesture: sender)
+            default:
+                break
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -30,20 +58,15 @@ class ViewController: UIViewController {
         )
     }
     
-    @IBOutlet var mainView: UIView!
-    
-    @IBAction func ShareGesture(_ sender: UIPanGestureRecognizer) {
-        if allImageAreHere() {
-            switch sender.state {
-            case .began, .changed:
-                transformViewWith(gesture: sender)
-            default:
-                break
-            }
+    @objc func changeDeviceOrientation() {
+        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+            swipeText.text = "Swipe left to share"
+        } else {
+            swipeText.text = "Swipe up to share"
         }
     }
 
-    // Check of all images presents to build the new image before sharing
+    // Check presence of all images to build the new image before sharing
     private func allImageAreHere() -> Bool {
         switch indexLayout {
         case 1:
@@ -65,51 +88,36 @@ class ViewController: UIViewController {
     }
         
     private func transformViewWith(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: mainView)
+        let translation = gesture.translation(in: gridView)
         if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
             if translation.x < -80 {
                 UIView.animate(withDuration: 0.8, animations: {
-                    self.mainView.transform = CGAffineTransform(translationX: -900, y: 0)                }, completion: { (success) in
+                    self.gridView.transform = CGAffineTransform(translationX: -900, y: 0)                }, completion: { (success) in
                     if success {
                         self.share()
                     }
                 })
                
             } else {
-                mainView.transform = .identity
+                gridView.transform = .identity
             }
         } else {
             if translation.y < -80 {
                 UIView.animate(withDuration: 0.8, animations: {
-                    self.mainView.transform = CGAffineTransform(translationX: 0, y: -900)
+                    self.gridView.transform = CGAffineTransform(translationX: 0, y: -900)
                 }, completion: { (success) in
                     if success {
                         self.share()
                     }
                 })
             } else {
-                mainView.transform = .identity
+                gridView.transform = .identity
             }
         }
     }
     
-    @IBOutlet weak var ButtonLayout1: UIButton!
-    @IBOutlet weak var ButtonLayout2: UIButton!
-    @IBOutlet weak var ButtonLayout3: UIButton!
-    
-    // Layouts Change
-    @IBAction func ButtonsLayout(_ sender: UIButton) {
-        indexLayout = sender.tag
-        actionWhenIndexChange()
-    }
-    
-    @IBOutlet weak var ImageBottomLeft: UIButton!
-    @IBOutlet weak var ImageBottomRight: UIButton!
-    @IBOutlet weak var ImageTopRight: UIButton!
-    @IBOutlet weak var ImageTopLeft: UIButton!
-    
-    
-    func actionWhenIndexChange() {
+
+    private func actionWhenIndexChange() {
         let selected = UIImage(named: "Selected")
         
         switch indexLayout {
@@ -131,17 +139,6 @@ class ViewController: UIViewController {
             ButtonLayout2.setImage(UIImage(named: "Default Image"), for: .normal)
             ImageTopRight.isHidden = false
             ImageBottomLeft.isHidden = false
-        }
-    }
-   
-    
-    @IBOutlet weak var SwipeText: UILabel!
-
-    @objc func changeDeviceOrientation() {
-        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
-            SwipeText.text = "Swipe left to share"
-        } else {
-            SwipeText.text = "Swipe up to share"
         }
     }
 
@@ -173,15 +170,15 @@ class ViewController: UIViewController {
         if UIDevice.current.orientation == .landscapeRight
             || UIDevice.current.orientation == .landscapeLeft {
                 UIView.animate(withDuration: 0.8, animations: {
-                    self.mainView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
                 }, completion: { (success) in
-                    if success { self.mainView.transform = .identity }
+                    if success { self.gridView.transform = .identity }
                 })
         } else {
             UIView.animate(withDuration: 0.8, animations: {
-                    self.mainView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
                 }, completion: { (success) in
-                    if success { self.mainView.transform = .identity }
+                    if success { self.gridView.transform = .identity }
                 })
             }
     }
