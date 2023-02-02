@@ -59,7 +59,8 @@ class ViewController: UIViewController {
     }
     
     @objc func changeDeviceOrientation() {
-        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+        if UIDevice.current.orientation == .landscapeRight ||
+            UIDevice.current.orientation == .landscapeLeft {
             swipeText.text = "Swipe left to share"
         } else {
             swipeText.text = "Swipe up to share"
@@ -86,13 +87,16 @@ class ViewController: UIViewController {
         }
         return false
     }
-        
+    
+    // Handle the share gesture with the device rotation
     private func transformViewWith(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: gridView)
-        if UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
+        if UIDevice.current.orientation == .landscapeRight ||
+            UIDevice.current.orientation == .landscapeLeft {
             if translation.x < -80 {
                 UIView.animate(withDuration: 0.8, animations: {
-                    self.gridView.transform = CGAffineTransform(translationX: -900, y: 0)                }, completion: { (success) in
+                    self.gridView.transform = CGAffineTransform(translationX: -900, y: 0)
+                }, completion: { (success) in
                     if success {
                         self.share()
                     }
@@ -116,7 +120,7 @@ class ViewController: UIViewController {
         }
     }
     
-
+    // Handle all actions when index is changed
     private func actionWhenIndexChange() {
         let selected = UIImage(named: "Selected")
         
@@ -142,6 +146,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // Create a new Image and combine with the actual layout index
     private func combine() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
             switch indexLayout {
@@ -165,23 +170,26 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         return newImage
     }
-    
+
+    // Handle return of the main view after the share with the device rotation
     private func undoTransformView() {
         if UIDevice.current.orientation == .landscapeRight
             || UIDevice.current.orientation == .landscapeLeft {
-                UIView.animate(withDuration: 0.8, animations: {
-                    self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
-                }, completion: { (success) in
-                    if success { self.gridView.transform = .identity }
-                })
-        } else {
             UIView.animate(withDuration: 0.8, animations: {
-                    self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
-                }, completion: { (success) in
-                    if success { self.gridView.transform = .identity }
-                })
-            }
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
+            }, completion: { (success) in
+                if success { self.gridView.transform = .identity }
+            })
+        } else {
+        UIView.animate(withDuration: 0.8, animations: {
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
+            }, completion: { (success) in
+                if success { self.gridView.transform = .identity }
+            })
+        }
     }
+
+    // Actions on share
     private func share() {
         let newImage = combine()
         let items = [newImage]
@@ -190,13 +198,14 @@ class ViewController: UIViewController {
         activity.completionWithItemsHandler = { (_, _, _, _) in
             self.undoTransformView()
         }
-        
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //  choose an image from the gallery and assign it to the button
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    @objc func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage]
         switch button.tag {
         case 4:
@@ -212,7 +221,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             ImageBottomRight.setImage(image as? UIImage, for: .normal)
             fullImage[3] = true
         default:
-            print("erreurs maggle")
+            print("Picker Error")
         }
         picker.dismiss(animated: true, completion: nil)
     }
